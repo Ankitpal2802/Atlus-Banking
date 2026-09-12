@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard &mdash; ATLUS-BANK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'accounts/extra/style.css' %}">
+</head>
+<body class="extra-page">
+    <div class="extra-nav">
+        <a href="{% url 'accounts:admin_dashboard' %}" class="logo-link">
+            <img src="{% static 'accounts/orig/bank-logo.jpeg' %}" alt="logo">
+            ATLUS-BANK Admin
+        </a>
+        <div class="nav-right">
+            <a href="/django-admin/">Full Django Admin</a>
+            <a href="{% url 'accounts:logout' %}">Log out</a>
+        </div>
+    </div>
+
+    <div class="extra-wrap" style="max-width:1100px;">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert-box {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="extra-card">
+            <h2>Manual deposit / withdrawal</h2>
+            <form method="post" class="extra-form" style="max-width:480px;">
+                {% csrf_token %}
+                {% for field in adjust_form %}
+                <div class="field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% for error in field.errors %}<p style="color:#b23b3b; font-size:0.8rem;">{{ error }}</p>{% endfor %}
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn-teal">Apply</button>
+            </form>
+        </div>
+
+        <div class="extra-card">
+            <h2>All customer accounts</h2>
+            {% if profiles %}
+            <table class="extra-table">
+                <thead>
+                    <tr><th>Account No.</th><th>Customer</th><th>Email</th><th>Balance</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody>
+                    {% for p in profiles %}
+                    <tr>
+                        <td>{{ p.account_number }}</td>
+                        <td>{{ p.user.get_full_name|default:p.user.username }}</td>
+                        <td>{{ p.user.email }}</td>
+                        <td>&#8377;{{ p.balance }}</td>
+                        <td>{% if p.is_frozen %}<span class="badge-frozen">Frozen</span>{% else %}<span class="badge-active">Active</span>{% endif %}</td>
+                        <td><a class="edit-link" href="{% url 'accounts:admin_edit_user' p.id %}">Edit &rarr;</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="empty-note">No customers yet.</p>
+            {% endif %}
+        </div>
+
+        <div class="extra-card">
+            <h2>Recent transactions (system-wide)</h2>
+            {% if recent_txns %}
+            <table class="extra-table">
+                <thead><tr><th>Date</th><th>Type</th><th>From</th><th>To</th><th>Amount</th></tr></thead>
+                <tbody>
+                    {% for txn in recent_txns %}
+                    <tr>
+                        <td>{{ txn.created_at|date:"d M Y, H:i" }}</td>
+                        <td>{{ txn.get_kind_display }}</td>
+                        <td>{{ txn.from_account.account_number|default:"—" }}</td>
+                        <td>{{ txn.to_account.account_number|default:"—" }}</td>
+                        <td>&#8377;{{ txn.amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="empty-note">No transactions yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

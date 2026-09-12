@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Transfer &mdash; ATLUS-BANK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'accounts/extra/style.css' %}">
+</head>
+<body class="extra-page">
+    <div class="extra-nav">
+        <a href="{% url 'accounts:dashboard' %}" class="logo-link">
+            <img src="{% static 'accounts/orig/bank-logo.jpeg' %}" alt="logo">
+            ATLUS-BANK
+        </a>
+        <div class="nav-right">
+            <a href="{% url 'accounts:my_account' %}">My Account</a>
+            <a href="{% url 'accounts:dashboard' %}">Home</a>
+            <a href="{% url 'accounts:logout' %}">Log out</a>
+        </div>
+    </div>
+
+    <div class="extra-wrap" style="max-width:480px;">
+        <div class="balance-strip">
+            <div>
+                <div class="meta">Sending from</div>
+                <div class="amount" style="font-size:1.1rem;">{{ profile.account_number }}</div>
+            </div>
+            <div>
+                <div class="meta">Available balance</div>
+                <div class="amount">&#8377;{{ profile.balance }}</div>
+            </div>
+        </div>
+
+        <div class="extra-card">
+            <h1 style="font-size:1.3rem; margin-bottom:0.3rem;">Transfer Money</h1>
+            <p class="empty-note" style="margin-bottom:1.4rem;">Send money instantly to another ATLUS-BANK account.</p>
+
+            <div id="message" class="transfer-message"></div>
+
+            <form id="transferForm" class="extra-form">
+                {% csrf_token %}
+                <div class="field">
+                    <label for="toAccount">To account number</label>
+                    <input type="text" id="toAccount" name="toAccount" placeholder="Enter 12-digit account number" required>
+                </div>
+                <div class="field">
+                    <label for="amount">Amount (&#8377;)</label>
+                    <input type="text" id="amount" name="amount" placeholder="0.00" required>
+                </div>
+                <button type="button" class="btn-teal" style="width:100%;" onclick="transfer()">Send Money</button>
+            </form>
+
+            <p class="auth-alt" style="margin-top:1.2rem;">
+                <a href="{% url 'accounts:dashboard' %}">&larr; Back to dashboard</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="{% static 'accounts/orig/script.js' %}"></script>
+</body>
+</html>

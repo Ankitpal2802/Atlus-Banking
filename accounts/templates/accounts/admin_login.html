@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login &mdash; ATLUS-BANK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'accounts/extra/style.css' %}">
+</head>
+<body class="extra-page">
+    <div class="extra-wrap" style="max-width:420px;">
+        <div class="extra-card" style="text-align:center; margin-top:4rem;">
+            <img src="{% static 'accounts/orig/bank-logo.jpeg' %}" alt="logo" style="width:3rem; margin-bottom:1rem;">
+            <h1 style="font-size:1.3rem;">Admin Login</h1>
+            <p class="empty-note" style="margin-bottom:1.2rem;">Staff access only.</p>
+
+            {% if error %}<div class="alert-box error">{{ error }}</div>{% endif %}
+
+            <form method="post" class="extra-form" style="text-align:left;">
+                {% csrf_token %}
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required autofocus>
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-teal" style="width:100%;">Log In as Admin</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

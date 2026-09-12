@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer &mdash; ATLUS-BANK Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'accounts/extra/style.css' %}">
+</head>
+<body class="extra-page">
+    <div class="extra-nav">
+        <a href="{% url 'accounts:admin_dashboard' %}" class="logo-link">
+            <img src="{% static 'accounts/orig/bank-logo.jpeg' %}" alt="logo">
+            ATLUS-BANK Admin
+        </a>
+        <div class="nav-right">
+            <a href="{% url 'accounts:admin_dashboard' %}">&larr; Back to dashboard</a>
+            <a href="{% url 'accounts:logout' %}">Log out</a>
+        </div>
+    </div>
+
+    <div class="extra-wrap" style="max-width:640px;">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert-box {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="extra-card">
+            <h1 style="font-size:1.3rem;">Edit customer &mdash; {{ profile.account_number }}</h1>
+            <form method="post" class="extra-form">
+                {% csrf_token %}
+                <div class="field">
+                    <label for="first_name">First name</label>
+                    <input type="text" id="first_name" name="first_name" value="{{ customer_user.first_name }}">
+                </div>
+                <div class="field">
+                    <label for="last_name">Last name</label>
+                    <input type="text" id="last_name" name="last_name" value="{{ customer_user.last_name }}">
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="{{ customer_user.email }}">
+                </div>
+                <div class="field">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" name="phone" value="{{ profile.phone }}">
+                </div>
+                <div class="field">
+                    <label for="account_number">Account number</label>
+                    <input type="text" id="account_number" name="account_number" value="{{ profile.account_number }}">
+                </div>
+                <div class="field">
+                    <label for="balance">Balance (&#8377;)</label>
+                    <input type="text" id="balance" name="balance" value="{{ profile.balance }}">
+                </div>
+                <div class="field">
+                    <label for="is_frozen">Account status</label>
+                    <select id="is_frozen" name="is_frozen">
+                        <option value="0" {% if not profile.is_frozen %}selected{% endif %}>Active</option>
+                        <option value="1" {% if profile.is_frozen %}selected{% endif %}>Frozen</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="new_password">Reset password (leave blank to keep current)</label>
+                    <input type="password" id="new_password" name="new_password" placeholder="New password">
+                </div>
+                <button type="submit" class="btn-teal">Save changes</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends 'accounts/base.html' %}
+{% block title %}Transaction History{% endblock %}
+{% block content %}
+<div class="recent-card recent-card--wide">
+    <h2>All transactions &mdash; {{ profile.account_number }}</h2>
+    {% if txns %}
+    <table class="txn-table">
+        <thead>
+            <tr><th>Date</th><th>Type</th><th>Details</th><th>Amount</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+            {% for txn in txns %}
+            <tr>
+                <td>{{ txn.created_at|date:"d M Y, H:i" }}</td>
+                <td>
+                    {% if txn.to_account == profile %}
+                        <span class="txn-tag txn-tag--in">Received</span>
+                    {% else %}
+                        <span class="txn-tag txn-tag--out">Sent</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if txn.to_account == profile %}
+                        From {{ txn.from_account.account_number|default:"Bank" }}
+                    {% else %}
+                        To {{ txn.to_account.account_number|default:"Bank" }}
+                    {% endif %}
+                    {% if txn.note %}&mdash; {{ txn.note }}{% endif %}
+                </td>
+                <td class="{% if txn.to_account == profile %}amount-in{% else %}amount-out{% endif %}">
+                    {% if txn.to_account == profile %}+{% else %}-{% endif %}&#8377;{{ txn.amount }}
+                </td>
+                <td>{{ txn.get_status_display }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="empty-state">No transactions yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

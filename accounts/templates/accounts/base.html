@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Atlas Bank{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a href="{% if user.is_authenticated %}{% url 'accounts:dashboard' %}{% else %}{% url 'accounts:login' %}{% endif %}" class="brand">
+                <img src="{% static 'accounts/images/bank-logo.png' %}" alt="Atlas Bank logo">
+                <span>Atlas Bank</span>
+            </a>
+
+            <nav>
+                {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <a href="{% url 'accounts:admin_dashboard' %}">Admin Dashboard</a>
+                    {% else %}
+                        <a href="{% url 'accounts:dashboard' %}">Dashboard</a>
+                        <a href="{% url 'accounts:transfer' %}">Transfer</a>
+                        <a href="{% url 'accounts:transactions' %}">Transactions</a>
+                    {% endif %}
+                    <a href="{% url 'accounts:logout' %}" class="btn btn-outline">Log out</a>
+                {% else %}
+                    <a href="{% url 'accounts:login' %}">Customer Login</a>
+                    <a href="{% url 'accounts:admin_login' %}">Admin Login</a>
+                    <a href="{% url 'accounts:register' %}" class="btn btn-primary">Open an account</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="page">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert--{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>Atlas Bank &mdash; demo project. Not a real financial institution.</p>
+    </footer>
+</body>
+</html>

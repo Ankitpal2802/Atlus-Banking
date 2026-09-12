@@ -1,0 +1,435 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATLUS-BANK</title>
+    <link rel="stylesheet" href="{% static 'accounts/orig/style1.css' %}" />
+    <link rel="stylesheet" href="{% static 'accounts/extra/home-enhance.css' %}" />
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script>
+window.embeddedChatbotConfig = {
+chatbotId: "X9MO2ZfzkkzpBDQO9TxZJ",
+domain: "www.chatbase.co"
+}
+</script>
+<script
+src="https://www.chatbase.co/embed.min.js"
+chatbotId="X9MO2ZfzkkzpBDQO9TxZJ"
+domain="www.chatbase.co"
+defer>
+</script>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="logo">
+        <a href="{% url 'accounts:dashboard' %}"
+          ><img src="{% static 'accounts/orig/bank-logo.jpeg' %}" alt="logo img" srcset=""
+        /></a>
+      </div>
+      <button class="hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="option">
+        <a href="#personal-banking" class="nav-link">Personal</a>
+        <a href="#" class="nav-link" data-toast="Corporate banking — coming soon.">Corporate</a>
+        <a href="#" class="nav-link" data-toast="MSME banking — coming soon.">MSME</a>
+        <a href="#" class="nav-link" data-toast="Agri banking — coming soon.">AGRI</a>
+        <a href="#" class="nav-link" data-toast="NRI banking — coming soon.">NRI</a>
+        <a href="#" class="nav-link" data-toast="Preferred Banking — coming soon.">Preffered Banking</a>
+      </div>
+      <div class="search">
+        <a href="#" data-toast="Search — coming soon."> <i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="tel:+911800000000"><i class="fa-solid fa-phone"></i></a>
+        <a href="#" data-toast="More languages — coming soon.">English <i class="fa-solid fa-angle-down"></i></a>
+      </div>
+      <div class="buttons">
+        <span class="acct-summary">{{ user.get_full_name|default:user.username }} &middot; Acct {{ profile.account_number }} &middot; &#8377;{{ profile.balance }}</span>
+        <a href="{% url 'accounts:logout' %}" class="btn2">
+          <i class="fa-solid fa-user-lock"></i>Log out
+        </a>
+      </div>
+    </div>
+    <div class="navbar2">
+      <div class="nav_links">
+        <a href="{% url 'accounts:my_account' %}"><i class="fa-regular fa-user"></i>Accounts</a>
+        <a href=""><i class="fa-regular fa-credit-card"></i>Cards</a>
+        <a href=""> <i class="fa-solid fa-hand-holding-dollar"></i>Loans</a>
+        <a href=""
+          ><i class="fa-solid fa-circle-dollar-to-slot"></i>Invesment</a
+        >
+        <a href=""><i class="fa-solid fa-user-group"></i>Tax Payments</a>
+        <a href=""><i class="fa-solid fa-computer"></i>Services</a>
+        <a href=""><i class="fa-solid fa-bag-shopping"></i>Offers </a>
+      </div>
+    </div>
+
+    <div class="crousel">
+      <div
+        id="carouselExampleAutoplaying"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'accounts/orig/IBA-Web-banner.jpg' %}" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'accounts/orig/Notice-to-Safe-Deposit-Locker-Holders_Web-Banner.jpg' %}" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'accounts/orig/Utsav-FD_Web-banner1_Eng.png' %}" class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row" id="personal-banking">
+        <!-- buton 1 -->
+        <div class="col-md-4 col-lg-4 col-sm-6">
+          <div class="card">
+            <img src="{% static 'accounts/orig/saving-account.svg' %}" class="mt-3" alt="...">
+            <div class="card-body mt-2">
+              <h5 class="card-title">Saving Account</h5>
+           
+            </div>
+            <ul class="list">
+              <li class="list-item">Feautures & Benefits</li>
+              <li class="list-item">FAQ's</li>
+              <!-- <li class="list-item">A third item</li>   -->
+            </ul>
+            <div class="card-body bttn-group mt-5">
+              <button type="button" class=" btn1" data-toast="Thanks for your interest in a Saving Account — a relationship manager will reach out soon.">Apply Now</button>
+              <button type="button" class="btn2 more-toggle">Know More</button>
+          
+            </div>
+          </div>
+        </div>
+        <!-- button 2 -->
+        <div class="col-md-4 col-lg-4 col-sm-6">
+          <div class="card">
+            <img src="{% static 'accounts/orig/home-loan.svg' %}" class="mt-3" alt="...">
+            <div class="card-body mt-2">
+              <h5 class="card-title">Home Loan</h5>
+           
+            </div>
+            <ul class="list">
+              <li class="list-item">Feautures & Benefits</li>
+              <li class="list-item">EMI Calculator</li>
+              <li class="list-item">Eligibility & Documentation</li>  
+            </ul>
+            <div class="card-body bttn-group mt-4">
+              <button type="button" class=" btn1" data-toast="Thanks for your interest in a Home Loan — a relationship manager will reach out soon.">Apply Now</button>
+              <button type="button" class="btn2 more-toggle">Know More</button>
+          
+            </div>
+          </div>
+        </div>
+        <!-- button 3 -->
+        <div class="col-md-4 col-lg-4 col-sm-6">
+          <div class="card">
+            <img src="{% static 'accounts/orig/customer-care.svg' %}" class="mt-3" alt="...">
+            <div class="card-body mt-2">
+              <h5 class="card-title">Customer Care</h5>
+           
+            </div>
+            <ul class="list">
+              <li class="list-item">Phone Banking</li>
+              <li class="list-item">Grievance Redressal</li>
+              <li class="list-item">Customer Education</li>  
+            </ul>
+            <div class="card-body bttn-group mt-4">
+              <button type="button" class=" btn1" data-toast="Your request has been noted — our support team will contact you shortly.">Apply Now</button>
+              <button type="button" class="btn2 more-toggle">Know More</button>
+          
+            </div>
+          </div>
+        </div>
+        <!-- button 4 -->
+        <div class="col-md-4 col-lg-4 col-sm-6">
+          <div class="card">
+            <img src="{% static 'accounts/orig/interest-rates.svg' %}" class="mt-3 int" alt="...">
+            <div class="card-body mt-2">
+              <h5 class="card-title"> Interest Rates</h5>
+           
+            </div>
+            <ul class="list">
+              <li class="list-item">Domestic Interest Rates</li>
+              <li class="list-item">Service Charges</li>
+              <!-- <li class="list-item">A third item</li>   -->
+            </ul>
+            <div class="card-body bttn-group mt-5">
+              <button type="button" class=" btn1" data-toast="Thanks! Our team will share the latest interest rates with you shortly.">Apply Now</button>
+              <button type="button" class="btn2 more-toggle">Know More</button>
+          
+            </div>
+          </div>
+        </div>
+        <!-- button 5 -->
+        <div class="col-md-4 col-lg-4 col-sm-6">
+          <div class="card">
+            <img src="{% static 'accounts/orig/gold-loan.svg' %}" class="mt-3 gold" alt="...">
+            <div class="card-body mt-2">
+              <h5 class="card-title">Gold Loan</h5>
+            </div>
+            <ul class="list">
+              <li class="list-item">Feautures & Benefits</li>
+              <li class="list-item">Charge & Rates</li>
+              <!-- <li class="list-item">Eligibility & Documentation</li>   -->
+            </ul>
+            <div class="card-body bttn-group mt-5">
+              <button type="button" class=" btn1" data-toast="Thanks for your interest in a Gold Loan — a relationship manager will reach out soon.">Apply Now</button>
+              <button type="button" class="btn2 more-toggle">Know More</button>
+          
+            </div>
+          </div>
+        </div>
+        <!-- button 6 -->
+        <div class="col-md-4 col-lg-4 col-sm-6">
+          <div class="card">
+            <img src="{% static 'accounts/orig/senir-citizen.svg' %}" class="mt-3" alt="...">
+            <div class="card-body mt-2">
+              <h5 class="card-title">Senior Citizen Accounts</h5>
+           
+            </div>
+            <ul class="list">
+              <li class="list-item">Advantage</li>
+              <li class="list-item">Feautures & Benefits</li>
+              <!-- <li class="list-item">A third item</li>   -->
+            </ul>
+            <div class="card-body bttn-group mt-4">
+              <button type="button" class=" btn1" data-toast="Thanks for your interest — our senior citizen banking team will reach out soon.">Apply Now</button>
+              <button type="button" class="btn2 more-toggle">Know More</button>
+          
+            </div>
+          </div>
+        </div>
+        
+      </div>
+     
+    </div>
+
+    <div class="container-fluid mt-4" >
+      <div class="row" style="background-color: #f9f9f9; ">
+        <div class="col-lg-6 col-md-6 col-sm-12 p-0 mt-5 mb-5">
+         <div class="container-fluid">
+          <h1 style="text-align: center; margin-bottom: 2rem;">Digital Banking Services</h1>
+          <div class="row service-card-row">
+            <!-- card 00 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+            <a href="{% url 'accounts:transfer' %}">
+            <div class="service-card">            
+                <i class="fa-solid fa-computer"></i>
+                <span class="service-card-span">Internet Banking</span>               
+              </div>
+              </a>
+            </div>
+            <!-- card 1 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="service-card">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <span class="service-card-span">Mobile Banking</span>
+              </div>
+            </div>
+            <!-- card 2 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <a href="https://wa.me/911800000000?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20WhatsApp%20Banking" target="_blank" rel="noopener" class="service-card card-link">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span class="service-card-span">Whatsapp Banking</span>
+              </a>
+            </div>
+            <!-- card 3 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <a href="#personal-banking" class="service-card card-link">
+                <i class="fa-regular fa-clock"></i>
+                <span class="service-card-span">Loan Easy Access</span>
+              </a>
+            </div>
+            <!-- card 4 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="service-card" data-toast="Video Re-KYC — coming soon.">
+                <i class="fa-regular fa-user"></i>
+                <span class="service-card-span">Video Re-KYC</span>
+              </div>
+            </div>
+            <!-- card 5 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="service-card" data-toast="FASTag services — coming soon.">
+                <i class="fa-solid fa-truck-fast"></i>
+                <span class="service-card-span">FASTag</span>
+              </div>
+            </div>
+            <!-- card 6 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="service-card" data-toast="Card PIN management — coming soon.">
+                <i class="fa-regular fa-credit-card"></i>
+                <span class="service-card-span">Credit Debit Card PIN</span>
+              </div>
+            </div>
+            <!-- card 7 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <a href="{% url 'accounts:change_password' %}" class="service-card card-link">
+                <i class="fa-solid fa-unlock-keyhole"></i>
+                <span class="service-card-span">Set Online Banking Password</span>
+              </a>
+            </div>
+            <!-- card 8 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="service-card" data-toast="Soft Token — coming soon.">
+                <i class="fa-solid fa-hand-pointer"></i>
+                <span class="service-card-span">Soft Token</span>
+              </div>
+            </div>
+            <!-- card 9 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="service-card" data-toast="Online form submission — coming soon.">
+                <i class="fa-regular fa-file"></i>
+                <span class="service-card-span">Submit Form 15G/H online</span>
+              </div>
+            </div>
+            <!-- card 10 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="service-card" data-toast="Samridhi Portal — coming soon.">
+                <i class="fa-solid fa-globe"></i>
+                <span class="service-card-span">IDBI Samridhi Portal</span>
+              </div>
+            </div>
+            <!-- card 11 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="service-card" data-toast="Password verification — coming soon.">
+                <i class="fa-solid fa-certificate"></i>
+                <span class="service-card-span">Verify Internet Banking Password </span>
+              </div>
+            </div>
+          </div>
+         </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12  p-0">
+          <img src="{% static 'accounts/orig/digital-bank.jpg' %}" alt="" srcset="" class="digital-bank-img">
+        </div>
+      </div>
+    </div>
+
+
+  <div class="screenshot">
+    <img src="{% static 'accounts/orig/screenshot-demo.jpg' %}" alt="">
+  </div>
+    
+  <div class="container">
+   
+   <div class="row">
+     <h1 style="text-align: center;">Other Link</h1>
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+       <div class="ol-card" data-toast="Group Companies page — coming soon.">
+          <img src="{% static 'accounts/orig/grp-com.svg' %}" alt="">
+          <span>Group Cmpanies</span>
+        </div>
+     </div>
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+       <div class="ol-card" data-toast="Careers page — coming soon.">
+          <img src="{% static 'accounts/orig/careers.svg' %}" alt="">
+          <span>Careers</span>
+        </div>
+       
+     </div>
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+       <div class="ol-card" data-toast="Service Charge & Fees page — coming soon.">
+          <img src="{% static 'accounts/orig/services-char.svg' %}" alt="">
+          <span>Service Charge & Fees</span>
+        </div>
+     </div>
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+       <div class="ol-card" data-toast="FAQs page — coming soon.">
+          <img src="{% static 'accounts/orig/faq.svg' %}" alt="">
+          <span>FAQ'S</span>
+        </div>
+     </div>
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+       <div class="ol-card" data-toast="RBI Advisory page — coming soon.">
+          <img src="{% static 'accounts/orig/rbi.svg' %}" alt="">
+          <span>RBI Advisary</span>
+        </div>
+     </div>
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+       <div class="ol-card" data-toast="Retired Employees Portal — coming soon.">
+          <img src="{% static 'accounts/orig/rep.svg' %}" alt="">
+          <span>Retired Employees Portal</span>
+        </div>
+     </div>
+
+   </div>
+ </div>
+ 
+    <div class="foooter">
+     <div class="container">
+       <div class="row">
+         <div class="col-lg-9 col-md-12 col-sm-12">
+           <div class="list">
+             <ul>
+               <li><a href="#" data-toast="ATLUS Training College page — coming soon.">ATLUS Training College</a></li>
+               <li><a href="#" data-toast="Tenders Awarded page — coming soon.">Tenders Awarded</a></li>
+               <li><a href="#" data-toast="E-Auctions page — coming soon.">E-Auctions</a></li>
+               <li><a href="mailto:support@atlusbank.test">Contact Us</a></li>
+               
+               <li><a href="#" data-toast="FAQs page — coming soon.">FAQs</a></li>
+               <li><a href="#" data-toast="Awards and Accolades page — coming soon.">Awards and Accolades</a></li>
+             </ul>
+           </div>
+        
+         </div>
+         <div class="col-lg-3 col-md-12 col-sm-12">
+           <div class="logo-list">
+             <a href="#" data-toast="Follow us on Facebook — coming soon." aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+             <a href="#" data-toast="Follow us on YouTube — coming soon." aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+             <a href="#" data-toast="Follow us on Instagram — coming soon." aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+             <a href="#" data-toast="Follow us on X (Twitter) — coming soon." aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+             <a href="#" data-toast="Follow us on LinkedIn — coming soon." aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+           </div>
+         </div>
+         <br><br><br>
+         <hr style="color: white;">
+         <h3 style="color: white;">made by pal shab</h3>
+       </div>
+     </div>
+    </div>    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/34dc56c9a8.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'accounts/extra/home-enhance.js' %}"></script>
+  </body>
+</html>

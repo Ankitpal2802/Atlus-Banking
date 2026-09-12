@@ -1,0 +1,359 @@
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        font-family: sans-serif;
+        background-color: #fff;
+    }
+
+    .nav-bar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        height: 5rem;
+        padding: 0 2rem;
+        position:sticky;
+        top: 0px;
+        background-color: #ffffff;
+        z-index: 5;
+    }
+    .nav-bar .logo a img{
+        width: 10rem;
+
+        
+    }
+    .nav-bar .option a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .nav-bar .buttons a{
+
+        text-decoration: none ;
+        
+        color: white;
+        border-radius: 2px;
+        border: 0;
+    }
+    .nav-bar .buttons .btn1{
+        background-color: #f37021;
+        padding: 0.75rem 0.75rem;
+        font-size: 0.8rem;
+        
+    }
+    .nav-bar .buttons .btn2{
+        background-color: #00836c;
+        padding: 0.75rem 1.5rem;
+        margin-left: 0.5rem;
+        font-size: 0.8rem;
+        
+    }
+    .search a{
+        text-decoration: none;
+        color: #00836c;
+    }
+    .logo{
+        width: 15%;
+        display: flex;
+        justify-content: center;
+    }
+    .option{
+        width: 50%;
+        display: flex;
+        justify-content: space-evenly;
+    
+
+    }
+    .option a{
+        transition: 0.5s;
+        font-weight:500;
+    }
+    .option a:hover{
+        color: #00836c;
+
+
+    }
+    .search{
+        width: 15%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .buttons{
+        width: 20%;
+        display: flex;
+    }
+    .buttons a i{
+        margin-right: 0.75rem;
+    }
+    .navbar2{
+        background-color: #00836c;    
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        height: 3.2rem;
+        position: fixed;
+        top: 5rem;
+        z-index: 5;
+    
+        
+    }
+    .navbar2 .nav_links a{
+        text-decoration: none;
+        color: white;
+        margin-right: 5rem;
+        padding-top: 0.5rem ;
+        padding-bottom: 0.5rem ;
+    
+    }
+    .navbar2 .nav_links a i{
+        margin-right: 0.5rem;
+        opacity: 0.8;
+    }
+    .navbar2 .nav_links a i:hover{
+        border-bottom: 1px solid white;
+        opacity: 1;
+    }
+    .container{
+        margin-top: 2rem;
+       
+     }
+    /*
+    .cards{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 80%;
+    }
+    .cardd{
+        width: 20rem;
+        height: 22rem;
+        border: 1px solid #efefef;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border-radius: 1rem;
+        
+    
+    }
+    .cardd .cardd-img img{
+    padding: 0.5rem 1rem;
+    }
+    .quick-links{
+        width: 20%;
+    }
+    .cardd-content .card-title{
+        font-size: 1.25rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+    .cardd-content{
+        padding: 1.2rem 0.75rem;
+    }
+    .cardd .cardd-content ul li::marker{
+        color: #00836c;
+    }
+    .cardd .btnn-group{
+
+        position: absolute;
+        bottom: 0px;
+
+    }
+    .btnn-group{
+       display: flex;
+    }
+
+    .cardd .cardd-btn .btn1{
+        background-color: #f37021;
+        color: white;
+        margin: 0 0.5rem;
+        border-radius: 0.25rem;
+        padding: 0.5rem 1rem;
+        margin-top: auto;
+    
+    }
+    .cardd .cardd-btn .btn2{
+        border: 1px solid #f37021;
+        color: #f37021;
+        transition: ease-in 0.25s;
+        margin: 0 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        margin-top: auto;
+    
+    }
+    .cardd .cardd-btn .btn2:hover{
+        border: 1px solid #f37021;
+    background-color: #f37021;
+    color: black;
+    } */
+    .card{
+        width: 22rem !important;
+       
+        border: 1px solid #efefef !important;
+        padding: 1.2rem 1.5rem !important;
+        margin-bottom: 2rem !important;
+        border-radius: 1rem !important;
+        font-family: "Montserrat", sans-serif !important;
+        font-optical-sizing: auto !important;
+        /* font-weight:600 !important; */
+        font-style: normal !important;
+        
+    
+    }
+    .card img{
+        width: 5rem;
+        height: 5rem;
+    }
+    .btn1{
+        background-color: #f37021;
+        color: white;
+        margin: 0 0.5rem;
+        border-radius: 0.25rem;
+        padding: 0.5rem 1rem;
+        margin-top: auto;
+        border: 1px solid #f37021;
+    }
+    .btn2{
+        border: 1px solid #f37021;
+        color: #f37021;
+        transition: all ease-in 0.25s;
+        margin: 0 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        margin-top: auto;
+        background-color: transparent;
+    }
+
+    .btn2:hover{
+       
+        background-color: #d4a88c;
+        color: black;
+    }
+    .bttn-group{
+        display: flex;
+        flex-direction: row;
+        padding: 0 !important;
+    }
+
+    .int{
+        width: 4rem !important;
+        height: 4.25rem !important;
+    }
+    .gold{
+        width: 4rem !important;
+        height: 4.25rem !important;
+    }
+
+    .card{
+        height: 22.6rem !important;
+    }
+
+    .digital-bank-img{
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+    .service-card-span {
+        color: #00836c;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        display: block;
+        margin-top: 10px;
+        transition: 0.3s all linear;
+        font-weight: 400;
+    }
+    .service-card i{
+        font-size: 2rem;
+        color: #00836c;
+  
+        
+    }
+    .service-card i:hover{
+        color: #fff;
+        fill: transparent;
+    }
+    .service-card{
+        text-align: center;
+        background-color: #fff;
+        padding: 2rem 1rem;
+        margin-top: 1rem;
+        height: 10rem;
+        border-radius: 1rem;
+        transition: all 0.5s ease-in;
+       
+    }
+    .service-card:hover {
+        background-color:#307360;
+        
+        
+    }
+    .service-card:hover i {
+        color:#fff;
+        opacity: 0.8;
+    }
+    .service-card:hover span {
+        color:#fff;
+        opacity: 0.8;
+    }
+    
+    @media (max-width: 576px) {
+        .container {
+            max-width: 100% !important;
+        }
+    }
+    .service-card-row{
+        justify-content: space-around !important;
+    }
+    .screenshot img{
+        width: 100%;
+        object-fit: cover;
+    }
+    .ol-card{
+        text-align: center;
+        background-color: #f9f9f9 ;
+        padding: 2rem 1rem;
+        margin-top: 1rem;
+        height: 10rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ol-card img{
+
+        width: 2.5rem;
+        height: 2.5rem;
+      
+        margin-bottom: 1rem;
+    }
+    .foooter{
+        width: 100%;
+        background-color: #222222;
+        display: flex;
+        margin-top: 2rem;
+    }
+    .list ul{
+        display: flex;
+        color: #fff;
+        flex-wrap: wrap;
+        list-style-type: none;
+           
+    }
+    .list ul li{
+        margin-right: 1rem;
+    }
+    .logo-list i{
+        color: #FFF;
+       margin-right: 1rem;
+        
+    }
+
+
+
+
+
+
+
