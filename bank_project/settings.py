@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-d@-w#&qid1-kx=%fe=&aon3wa^up%l3c$t8)dkwx&iuqki(@ft
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost',
+    '127.0.0.1',
+    'atlus-banking.vercel.app',  
+    '.vercel.app',]
 
 
 # Application definition
